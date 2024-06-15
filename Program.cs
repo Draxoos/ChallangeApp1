@@ -1,26 +1,21 @@
-﻿{
-    string name = "Ewa"; 
-    string gender = "Female"; 
-    var age = 30; 
+int number = 2137274;
+string numberInString = number.ToString();
+char[] letters = numberInString.ToArray();
 
-    
-    if (gender == "Female" && age <= 30) 
-    {
-        Console.WriteLine("Kobieta poniżej 30 lat"); 
-    }
+char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-    else if (name == "Ewa" && age == 30)
-    {
-        Console.WriteLine("Ewa, lat 30"); 
-    }
-    
-    else if (gender == "Male" && age < 18) 
-    {
-        Console.WriteLine("Niepełnoletni mężczyzna"); 
-    }
+Console.WriteLine("Wyniki dla liczby" + numberInString);
 
-    else
+foreach (char num in numbers)
+{
+    var counter = 0;
+
+    foreach (char let in letters)
     {
-        Console.WriteLine("DANE NIEPOPRAWNE"); 
+        if (num == let)
+        {
+            counter++;
+        }
     }
+    Console.WriteLine(num + " = " + counter);
 }
