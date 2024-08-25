@@ -4,7 +4,7 @@
     {
         private List<int> score = new List<int>();
 
-        public Employee(string name, string last_name, int age)
+        public Employee(string name, string last_name, int age, int result)
         {
             this.Name = name;
             this.Last_Name = last_name;
@@ -15,6 +15,7 @@
         public string Name { get; private set; }
         public string Last_Name { get; private set; }
         public int Age { get; private set; }
+        
 
         public int Result
         {
