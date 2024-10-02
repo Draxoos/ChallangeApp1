@@ -1,65 +1,87 @@
-using ChallengeApp1;
+ï»¿using ChallengeApp1;
 using System.Reflection.Metadata;
 
 namespace ChallangeApp1_Test
 {
-    public class Tests
+    public class TypeTests
     {
        
 
         [Test]
-        public void EmployeeCollectScore()
+        public void NumbersAreEqual()
         {
             //arrange
-            Employee employee1 = new Employee("Eryk", "Turli?ski", 20, 0);
-            employee1.AddScore(5);
-            employee1.AddScore(6);
-            employee1.AddScore(7);
-            employee1.AddScore(2);
+            int number1 = 5;
+            int number2 = 5;
 
             //act
-            var result = employee1.Result; 
+
 
             //assert
-            Assert.AreEqual(20, result);
+           Assert.AreEqual(number1, number2);
 
         }
 
 
         [Test]
-        public void EmployeeCollectNegativeScore()
+        public void EmployeesNotEqual()
         {
             //arrange
-            Employee employee2 = new Employee("Kuba", "So³up", 21, 0);
-            employee2.AddScore(-4);
-            employee2.AddScore(-2);
-            employee2.AddScore(-8);
-            employee2.AddScore(-5);
-
+            var employee1 = GetEmployee("Eryk");
+            var employee2 = GetEmployee("Eryk");
             //act
-            var result = employee2.Result;
+
 
             //assert
-            Assert.AreEqual(-19, result);
+            Assert.AreNotEqual(employee1, employee2);
         }
        
        
         [Test]
 
-        public void EmployeeCollectMixedScore()
+        public void StringsAreEqual()
         {
             //arrange
-            Employee employee3 = new Employee("Damian", "Kajrewski", 19, 0);
-            employee3.AddScore(-4);
-            employee3.AddScore(2);
-            employee3.AddScore(-2);
-            employee3.AddScore(8);
-
+            string a = "69";
+            string b = "69";
             //act
-            var result = employee3.Result;
+
 
             //assert
-            Assert.AreEqual(4, result);
+            Assert.AreEqual(a, b);
+        }
+
+        [Test]
+
+        public void DoubleAreNotEqual()
+        {
+            //arrange
+            double a = 3.14159265358919328462643383279;
+            double b = 3.14159265358979328462643383279;
+            //act
+
+
+            //assert
+            Assert.AreNotEqual(a, b);
+        }
+
+        [Test]
+
+        public void FloatAreNotEqual()
+        {
+            //arrange
+            float number1 = 342423;
+            float number2 = 346423;
+            //act
+
+
+            //assert
+            Assert.AreNotEqual(number1,number2);
+        }
+
+        private Employee GetEmployee(string name)
+        {
+            return new Employee(name);
         }
     }
 }
