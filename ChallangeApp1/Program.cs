@@ -1,10 +1,23 @@
 ﻿using ChallengeApp1;
 
-var employee = new Employee("Eryk", "Turliński");
-employee.AddGrade(5);
-employee.AddGrade(7);
-employee.AddGrade(2);
+Console.WriteLine("Witamy w Programie XYZ do oceny Pracowników");
+Console.WriteLine("--------------------------------------------");
+Console.WriteLine();
+
+var employee = new Employee();
+
+while (true)
+{
+    Console.WriteLine("Podaj kolejną ocenę pracownika");
+    var input = Console.ReadLine();
+    if (input == "q")
+    { 
+    break;
+    }
+    employee.AddGrade(input);
+}
+
 var statistics = employee.GetStatistics();
-Console.WriteLine($"Average: {statistics.Average:N3}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
+Console.WriteLine($"Average: {statistics.Average}");
+Console.WriteLine($"Average: {statistics.Min}");
+Console.WriteLine($"Average: {statistics.Max}");

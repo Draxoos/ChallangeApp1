@@ -3,70 +3,44 @@ using System.Reflection.Metadata;
 
 namespace ChallangeApp1_Test
 {
-    public class StatisticsTests
+    public class EmployeeGradeTests
     {
 
         [Test]
-        public void EmployeeCollectPositiveGrade()
+        public void CheckScore()
         {
             //arrange
-            var employee = new Employee("Eryk", "Turliński");
-            employee.AddGrade(5);
-            employee.AddGrade(7);
-            employee.AddGrade(2);
-            var statistics = employee.GetStatistics();
+            Employee employee = new Employee();
+            employee.AddGrade(50);
+            employee.AddGrade(60);
+            employee.AddGrade(404);
 
             //act
-            var averageresult = statistics.Average;
-            var minresult = statistics.Min;
-            var maxresult = statistics.Max;
-
+            var stats_01 = employee.GetStatistics();
             //assert
-            Assert.AreEqual(4.66666651f, averageresult);
-            Assert.AreEqual(2, minresult);
-            Assert.AreEqual(7, maxresult);
+            Assert.AreEqual(stats_01.Min, 50);
+            Assert.AreEqual(stats_01.Max,60);
+            Assert.AreEqual(stats_01.Average, 55);
         }
 
         [Test]
-        public void EmployeeCollectNegativeGrade()
+        public void CheckMixedScore()
         {
             //arrange
-            var employee = new Employee("Sara", "Jurczyk");
-            employee.AddGrade(-8);
-            employee.AddGrade(-3);
-            employee.AddGrade(-4);
-            var statistics = employee.GetStatistics();
+            Employee employee = new Employee();
+            employee.AddGrade("50");
+            employee.AddGrade(60);
+            employee.AddGrade("d");
 
             //act
-            var averageresult = statistics.Average;
-            var minresult = statistics.Min;
-            var maxresult = statistics.Max;
+            var stats_02 = employee.GetStatistics();
 
             //assert
-            Assert.AreEqual(-5, averageresult);
-            Assert.AreEqual(-8, minresult);
-            Assert.AreEqual(-3, maxresult);
+            Assert.AreEqual(stats_02.Min, 50);
+            Assert.AreEqual(stats_02.Max, 60);
+            Assert.AreEqual(stats_02.Average, 55);
         }
 
-        [Test]
-        public void EmployeeCollectMixedGrade()
-        {
-            //arrange
-            var employee = new Employee("Grzegoż", "Żak");
-            employee.AddGrade(-5);
-            employee.AddGrade(10);
-            employee.AddGrade(-2);
-            var statistics = employee.GetStatistics();
-
-            //act
-            var averageresult = statistics.Average;
-            var minresult = statistics.Min;
-            var maxresult = statistics.Max;
-
-            //assert
-            Assert.AreEqual(1, averageresult);
-            Assert.AreEqual(-5, minresult);
-            Assert.AreEqual(10, maxresult);
-        }
+       
     }
 }
