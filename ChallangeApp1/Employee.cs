@@ -32,7 +32,7 @@ namespace ChallengeApp1
             }
            else
             {
-                Console.WriteLine("invalid data provided");
+                throw new Exception("invalid data provided");
             }
         }
 
@@ -61,8 +61,7 @@ namespace ChallengeApp1
                     this.grades.Add(20);
                     break;
                default:
-                    this.grades.Add(0);
-                    break;
+                    throw new Exception("Wrong Letter"); 
             }
         }
 
@@ -74,7 +73,7 @@ namespace ChallengeApp1
             }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("String is not float");
             }
         }
 
