@@ -3,24 +3,14 @@ using System.Diagnostics;
 
 namespace ChallengeApp1
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
-
-        public Employee()
-        {
-        }
-
         public Employee(string name, string surname)
-        {
-            this.Name = name;
-            this.Surname = surname;
-        }
+            :base(name,surname) { }
 
-        public string Name { get; private set; }
-
-        public string Surname { get; private set; }
-
+        public Employee(string name)
+            :this(name, "no surname") { }
         public void AddGrade(float grade)
         {
             int valueinint = (int)grade;
