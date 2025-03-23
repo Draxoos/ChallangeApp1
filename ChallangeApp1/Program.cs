@@ -1,19 +1,15 @@
-﻿using ChallengeApp1;
+﻿using ChallangeApp1;
 
-Console.WriteLine("Witamy w Programie XYZ do oceny Pracowników");
+Console.WriteLine("Witamy w Programie do oceny Pracowników");
 Console.WriteLine("--------------------------------------------");
 Console.WriteLine();
 
-var employee = new Employee("Anon");
+var employee = new EmployeeInFile("Eryk", "Turliński");
+employee.GradeAdded += EmployeeGradeAdded;
 
-try
+void EmployeeGradeAdded(object sender, EventArgs args)
 {
-    Employee emp = null;
-    var name = emp.Surname;
-}
-catch(Exception)
-{
-    Console.WriteLine("Tego nie powinno być");
+    Console.WriteLine("Dodano nową ocenę");
 }
 
 while (true)
@@ -37,5 +33,5 @@ while (true)
 
 var statistics = employee.GetStatistics();
 Console.WriteLine($"Average: {statistics.Average}");
-Console.WriteLine($"Average: {statistics.Min}");
-Console.WriteLine($"Average: {statistics.Max}");
+Console.WriteLine($"Min: {statistics.Min}");
+Console.WriteLine($"Max: {statistics.Max}");

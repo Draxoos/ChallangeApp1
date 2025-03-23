@@ -3,6 +3,7 @@ namespace ChallangeApp1
 {
     public class EmployeeInFile : EmployeeBase
     {
+        public override event GradeAddedDelegate GradeAdded;
         private const string fileName = "grades.txt";
         public EmployeeInFile(string name, string surname) 
             : base(name, surname)
@@ -16,6 +17,11 @@ namespace ChallangeApp1
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
+                }
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
                 }
             }
            else
@@ -62,7 +68,7 @@ namespace ChallangeApp1
                     statistics.Max = Math.Max(statistics.Max, grade);
                 }
 
-                statistics.Average /= grade.Count;
+                statistics.Average = this.grade.Sum() / this.grade.Count;
 
                 switch (statistics.Average)
                 {
