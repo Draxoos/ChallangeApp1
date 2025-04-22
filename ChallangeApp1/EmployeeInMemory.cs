@@ -37,37 +37,10 @@
             {
                 var statistics = new Statistics();
 
-                statistics.Min = float.MaxValue;
-                statistics.Max = float.MinValue;
-                statistics.Average = 0;
-
                 foreach (var grade in this.grade)
                 {
-                    statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Max = Math.Max(statistics.Max, grade);
-                }
-
-                statistics.Average = this.grade.Sum() / this.grade.Count;
-
-                switch (statistics.Average)
-                {
-                    case var x when x >= 80:
-                         statistics.AverageLetter = 'A';
-                        break;
-                    case var x when x >= 60:
-                        statistics.AverageLetter = 'B';
-                        break;
-                    case var x when x >= 40: 
-                        statistics.AverageLetter = 'C';
-                        break;
-                    case var x when x >= 20:
-                        statistics.AverageLetter = 'D';
-                        break;
-                        default:
-                        statistics.AverageLetter = 'E';
-                        break;
-
-                }
+                    statistics.AddGrade(grade);
+                }  
                 return statistics;
             }
             else

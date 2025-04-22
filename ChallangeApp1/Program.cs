@@ -1,37 +1,40 @@
 ﻿using ChallangeApp1;
 
-Console.WriteLine("Witamy w Programie do oceny Pracowników");
-Console.WriteLine("--------------------------------------------");
+Console.WriteLine("Witamy w programie do oceny pracowników");
+Console.WriteLine("---------------------------------------------");
 Console.WriteLine();
 
-var employee = new EmployeeInFile("Eryk", "Turliński");
+var employee = new EmployeeInMemory("Eryk", "Turliński");
+
 employee.GradeAdded += EmployeeGradeAdded;
 
 void EmployeeGradeAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową ocenę");
-}
+};
 
 while (true)
 {
-    Console.WriteLine("Podaj kolejną ocenę pracownika");
+    Console.WriteLine("Podaj kolejną ocenę pracownika: ");
     var input = Console.ReadLine();
     if (input == "q")
-    { 
-    break;
+    {
+        break;
     }
-    
+
     try
     {
         employee.AddGrade(input);
     }
-    catch(Exception e )
+    catch (Exception e)
     {
-        Console.WriteLine($"Exeption catched: {e.Message}");
+        Console.WriteLine($"Exception caught: {e.Message}");
     }
 }
 
 var statistics = employee.GetStatistics();
-Console.WriteLine($"Average: {statistics.Average}");
+Console.WriteLine();
+Console.WriteLine($"Average: {statistics.Average:N2}");
+Console.WriteLine($"Average Letter: {statistics.AverageLetter}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");

@@ -33,8 +33,37 @@
 
         public void AddGrade(char grade)
         {
-            float gradefromchar = (float)grade;
-            this.AddGrade(gradefromchar);
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
+                    AddGrade(100);
+                    break;
+                case 'B':
+                case 'b':
+                    AddGrade(80);
+                    break;
+                case 'C':
+                case 'c':
+                    AddGrade(60);
+                    break;
+                case 'D':
+                case 'd':
+                    AddGrade(40);
+                    break;
+                case 'E':
+                case 'e':
+                    AddGrade(20);
+                    break;
+                default:
+                    throw new Exception("Wrong Letter");
+            }
+        }
+
+        public void AddGrade(decimal grade)
+        {
+            float gradefromdecimal = (float)grade;
+            this.AddGrade(gradefromdecimal);
         }
 
 
@@ -43,6 +72,10 @@
             if (float.TryParse(grade, out float result))
             {
                 this.AddGrade(result);
+            }
+            else if (char.TryParse(grade, out char resultChar))
+            {
+                this.AddGrade(resultChar);
             }
             else
             {
